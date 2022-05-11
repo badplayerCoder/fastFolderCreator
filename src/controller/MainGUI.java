@@ -1,4 +1,4 @@
-package gui;
+package controller;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -45,7 +45,7 @@ public class MainGUI extends JFrame {
 	 */
 	public MainGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 310, 172);
+		setBounds(100, 100, 325, 180);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -97,14 +97,14 @@ public class MainGUI extends JFrame {
 		contentPane.add(textLimit);
 		textLimit.setColumns(10);
 		
-		JLabel lblLimit = new JLabel("Begrænsning");
+		JLabel lblLimit = new JLabel("Limit");
 		lblLimit.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLimit.setBounds(215, 6, 89, 14);
 		contentPane.add(lblLimit);
 		
-		JLabel lblCreator = new JLabel("Lavet af lassehas");
+		JLabel lblCreator = new JLabel("LH");
 		lblCreator.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCreator.setBounds(6, 124, 120, 14);
+		lblCreator.setBounds(0, 127, 27, 14);
 		contentPane.add(lblCreator);
 		
 		JButton btnNewButton = new JButton("Opret");
