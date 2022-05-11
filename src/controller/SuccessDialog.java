@@ -30,6 +30,7 @@ public class SuccessDialog extends JDialog {
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		setTitle("Succes");
 		{
 			JLabel lblNewLabel = new JLabel("Filerne er oprettet");
 			lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 14));

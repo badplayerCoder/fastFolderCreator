@@ -52,6 +52,7 @@ public class MainGUI extends JFrame {
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		setTitle("Hurtig Filer by LH");
 		
 		textAmount = new JTextField();
 		textAmount.addKeyListener(new KeyAdapter() {
@@ -63,6 +64,12 @@ public class MainGUI extends JFrame {
 		
 		textLimit = new JTextField();
 		textLimit.setFocusable(false);
+		textLimit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				textLimit.setFocusable(true);
+			}
+		});
 		textLimit.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {

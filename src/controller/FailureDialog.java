@@ -30,11 +30,12 @@ public class FailureDialog extends JDialog {
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		setTitle("Fejl 40");
 		{
 			JLabel lblNewLabel = new JLabel(fejl);
 			lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel.setBounds(6, 6, 298, 56);
+			lblNewLabel.setBounds(6, 6, 278, 56);
 			contentPanel.add(lblNewLabel);
 		}
 		{
