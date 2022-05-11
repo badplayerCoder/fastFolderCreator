@@ -5,23 +5,51 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CreateFile {
 	
-	public void createFolders(int start, int quantity, int limit) throws IOException {
+	private String fileSeparator = System.getProperty("file.separator");
+	
+	private LocalDate date = LocalDate.now();
+	private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd.MM.YY");
+	private String desktopFolder = date.format(format);
+	
+	public void createFolders(String headFolder, int start, int quantity, int limit) throws IOException {
+		if(headFolder.isEmpty())
+			return;
+		
 		if(limit < quantity)
 			return;
 		
-		String path = getProgramPath2();
-        String fileSeparator = System.getProperty("file.separator");
+		
+		String path = getProgramPath2(); //	Gets the path to desktop
+		String dateFolder = path + fileSeparator + desktopFolder + fileSeparator;
+		
+		File df = new File(dateFolder);
+		if(!df.isDirectory()) {
+			FailureDialog fd = new FailureDialog();
+			fd.setVisible(true);
+			return;
+		}
+
+        String mainFolder = path + fileSeparator + desktopFolder + fileSeparator + headFolder + fileSeparator; //Gets the path to headFolder inside of the date folder
+        
+        new File(mainFolder).mkdir();
         
 		int sum = start + quantity;
 		for(int i = start; i < sum; i++) {
-			String folderDir = path + fileSeparator + "" + i + fileSeparator;
-			new File(folderDir).mkdirs();
-			File f = new File(folderDir +"Nyt tekstdokument.txt");
-			f.createNewFile();
+			String subdirs = mainFolder + fileSeparator + "" + i + fileSeparator;
+			System.out.println(subdirs);
+			new File(subdirs).mkdirs();
+			File f = new File(subdirs + "Nyt tekstdokument.txt");
+			if(f.createNewFile()) {
+				
+			}
 		}
+		SuccessDialog sd = new SuccessDialog();
+		sd.setVisible(true);
 	}
 	
 	private String getProgramPath2() throws UnsupportedEncodingException {
