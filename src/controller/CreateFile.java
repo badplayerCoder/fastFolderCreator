@@ -17,22 +17,39 @@ public class CreateFile {
 	private String desktopFolder = date.format(format);
 	
 	public void createFolders(String headFolder, int start, int quantity, int limit) throws IOException {
-		if(headFolder.isEmpty())
-			return;
-		
-		if(limit < quantity)
-			return;
-		
-		
 		String path = getProgramPath2(); //	Gets the path to desktop
 		String dateFolder = path + fileSeparator + desktopFolder + fileSeparator;
 		
 		File df = new File(dateFolder);
 		if(!df.isDirectory()) {
-			FailureDialog fd = new FailureDialog();
+			FailureDialog fd = new FailureDialog("Dato-mappen kan ikke findes i systemet");
 			fd.setVisible(true);
 			return;
 		}
+		
+		if(headFolder.isEmpty()) {
+			FailureDialog failHead = new FailureDialog("<html>Mangler at indtaste ved <br>hovedmappen");
+			failHead.setVisible(true);
+			return;
+		}
+		
+		if(start == 0) {
+			FailureDialog startFail = new FailureDialog("<html>Mangler at indtaste ved <br>start mappe nummeret");
+			startFail.setVisible(true);
+			return;
+		}
+		
+		if(quantity == 0) {
+			FailureDialog quantityFail = new FailureDialog("<html>Mangler at indtaste ved <br>antallet");
+			quantityFail.setVisible(true);
+			return;
+		}
+		
+		if(limit < quantity) {
+			FailureDialog fdd = new FailureDialog("Antallet overstiger limit");
+			fdd.setVisible(true);
+			return;
+		}	
 
         String mainFolder = path + fileSeparator + desktopFolder + fileSeparator + headFolder + fileSeparator; //Gets the path to headFolder inside of the date folder
         

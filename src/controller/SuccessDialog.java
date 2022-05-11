@@ -13,6 +13,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class SuccessDialog extends JDialog {
 
@@ -31,8 +32,9 @@ public class SuccessDialog extends JDialog {
 		setResizable(false);
 		{
 			JLabel lblNewLabel = new JLabel("Filerne er oprettet");
+			lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel.setBounds(6, 6, 181, 56);
+			lblNewLabel.setBounds(6, 6, 298, 56);
 			contentPanel.add(lblNewLabel);
 		}
 		{

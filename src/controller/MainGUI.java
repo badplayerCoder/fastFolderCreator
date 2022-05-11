@@ -60,6 +60,19 @@ public class MainGUI extends JFrame {
 				ActionHandler.integerHandler(e, textAmount);
 			}
 		});
+		
+		textLimit = new JTextField();
+		textLimit.setFocusable(false);
+		textLimit.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				ActionHandler.integerHandler(e, textLimit);
+			}
+		});
+		textLimit.setText("20");
+		textLimit.setBounds(239, 21, 42, 20);
+		contentPane.add(textLimit);
+		textLimit.setColumns(10);
 		textAmount.setBounds(10, 100, 155, 20);
 		contentPane.add(textAmount);
 		textAmount.setColumns(10);
@@ -85,18 +98,6 @@ public class MainGUI extends JFrame {
 		lblMax.setBounds(10, 84, 155, 14);
 		contentPane.add(lblMax);
 		
-		textLimit = new JTextField();
-		textLimit.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				ActionHandler.integerHandler(e, textLimit);
-			}
-		});
-		textLimit.setText("20");
-		textLimit.setBounds(239, 21, 42, 20);
-		contentPane.add(textLimit);
-		textLimit.setColumns(10);
-		
 		JLabel lblLimit = new JLabel("Limit");
 		lblLimit.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLimit.setBounds(215, 6, 89, 14);
@@ -108,6 +109,18 @@ public class MainGUI extends JFrame {
 		contentPane.add(lblCreator);
 		
 		JButton btnNewButton = new JButton("Opret");
+		btnNewButton.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+					try {
+						create.createFolders(getHeadFolder(), getStart(), getAmount(), getLimit());
+					} catch (IOException e1) {
+						System.out.println(e1.getMessage());
+					}
+				}
+			}
+		});
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

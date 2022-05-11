@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
 
 public class FailureDialog extends JDialog {
 
@@ -21,7 +22,7 @@ public class FailureDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public FailureDialog() {
+	public FailureDialog(String fejl) {
 		setBounds(100, 100, 310, 135);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -30,9 +31,10 @@ public class FailureDialog extends JDialog {
 		setLocationRelativeTo(null);
 		setResizable(false);
 		{
-			JLabel lblNewLabel = new JLabel("Dato-mappen kan ikke findes i systemet");
+			JLabel lblNewLabel = new JLabel(fejl);
+			lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-			lblNewLabel.setBounds(6, 6, 306, 56);
+			lblNewLabel.setBounds(6, 6, 298, 56);
 			contentPanel.add(lblNewLabel);
 		}
 		{
